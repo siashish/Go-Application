@@ -23,6 +23,10 @@ import (
 var userCollection *mongo.Collection = configs.GetCollection(configs.DB, "users")
 var validate = validator.New()
 
+func Home(c *fiber.Ctx) error {
+	return c.JSON(&fiber.Map{"data": "Hello from Fiber & mongoDB By Ashish"})
+}
+
 func CreateUser(c *fiber.Ctx) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	var user models.User
